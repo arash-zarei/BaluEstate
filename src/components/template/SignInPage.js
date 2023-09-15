@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 import Form from "@/modules/AuthPage/Form";
 import Link from "next/link";
@@ -12,8 +15,31 @@ const SignInPage = () => {
     password: "",
   });
 
+  const { email, password } = value;
+
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const changeHandler = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
+  };
+
+  const signInHandler = async () => {
+    setLoading(true);
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    setLoading(false);
+    console.log(res);
+
+    if (!res.error) {
+      toast.success("ورود موققیت آمیز بود.");
+      router.replace("/advertisements");
+    }
+    if (res.error) toast.error(res.error);
   };
 
   return (
@@ -32,6 +58,8 @@ const SignInPage = () => {
           email={value.email}
           password={value.password}
           changeHandler={changeHandler}
+          signHandler={signInHandler}
+          loading={loading}
         />
         <p className="mt-5">
           حساب کاربری ندارید؟
@@ -40,6 +68,7 @@ const SignInPage = () => {
           </Link>
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };
