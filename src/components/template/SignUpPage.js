@@ -9,6 +9,7 @@ const SignUpPage = () => {
   const [value, setValue] = useState({
     email: "",
     password: "",
+    rePassword: "",
   });
 
   const changeHandler = (e) => {
@@ -30,7 +31,9 @@ const SignUpPage = () => {
           title="ثبت نام"
           email={value.email}
           password={value.password}
+          rePassword={value.rePassword}
           changeHandler={changeHandler}
+          signHandler={signUpHandler}
         />
         <p className="mt-5">
           حساب کاربری دارید؟
