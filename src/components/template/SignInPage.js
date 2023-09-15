@@ -26,7 +26,7 @@ const SignInPage = () => {
           height={512}
           className="w-[150px]"
         />
-        <h3 className="text-2xl font-bold text-yellow-400 mt-4">ثبت نام</h3>
+        <h3 className="text-2xl font-bold text-yellow-400 mt-4">ورود</h3>
         <Form
           title="ورود"
           email={value.email}
