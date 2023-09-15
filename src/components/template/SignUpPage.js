@@ -1,9 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+
 import Form from "@/modules/AuthPage/Form";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 
 const SignUpPage = () => {
   const [value, setValue] = useState({
@@ -11,8 +14,31 @@ const SignUpPage = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const changeHandler = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
+  };
+
+  const signUpHandler = async () => {
+    setLoading(true);
+
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(value),
+    });
+    const data = await res.json();
+
+    setLoading(false);
+
+    if (data.message) {
+      toast.success(data.message);
+      router.replace("/signin");
+    }
+    if (data.error) toast.error(data.error);
   };
 
   return (
@@ -31,6 +57,8 @@ const SignUpPage = () => {
           email={value.email}
           password={value.password}
           changeHandler={changeHandler}
+          signHandler={signUpHandler}
+          loading={loading}
         />
         <p className="mt-5">
           حساب کاربری دارید؟
@@ -39,6 +67,7 @@ const SignUpPage = () => {
           </Link>
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };
