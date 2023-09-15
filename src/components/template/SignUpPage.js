@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
 import Form from "@/modules/AuthPage/Form";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const SignUpPage = () => {
@@ -31,6 +32,12 @@ const SignUpPage = () => {
           password={value.password}
           changeHandler={changeHandler}
         />
+        <p className="mt-5">
+          حساب کاربری دارید؟
+          <Link href="/signup" className="text-blue-600 underline">
+            ورود
+          </Link>
+        </p>
       </div>
     </div>
   );
