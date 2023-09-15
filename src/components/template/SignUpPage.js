@@ -34,7 +34,7 @@ const SignUpPage = () => {
         />
         <p className="mt-5">
           حساب کاربری دارید؟
-          <Link href="/signup" className="text-blue-600 underline">
+          <Link href="/signin" className="text-blue-600 underline">
             ورود
           </Link>
         </p>
