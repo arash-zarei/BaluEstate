@@ -1,8 +1,8 @@
 import React from "react";
 
-import Banner from "@/modules/Banner";
-import Attributes from "@/modules/Attributes";
-import Advertisement from "@/modules/Advertisement";
+import Banner from "@/modules/HomePage/Banner";
+import Attributes from "@/modules/HomePage/Attributes";
+import Advertisement from "@/modules/HomePage/Advertisement";
 
 const HomePage = () => {
   return (
