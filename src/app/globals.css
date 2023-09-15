@@ -12,3 +12,7 @@ input,
 textarea {
   font-family: inherit;
 }
+
+.attribute_card {
+  @apply flex flex-col gap-2 items-center py-3 my-4 rounded-md;
+}
