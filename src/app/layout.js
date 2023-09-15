@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${yekan.className} max-w-6xl mx-auto px-2`}>
+      <body className={`${yekan.className} max-w-6xl mx-auto px-4`}>
         <Layout>{children}</Layout>
       </body>
     </html>
