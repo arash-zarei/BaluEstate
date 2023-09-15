@@ -1,5 +1,6 @@
 import "./globals.css";
 import { yekan } from "@/utils/fonts";
+import Layout from "@/layout/Layout";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${yekan.className} max-w-6xl mx-auto`}>{children}</body>
+      <body className={`${yekan.className} max-w-6xl mx-auto`}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
