@@ -13,7 +13,7 @@ const DashboardLayout = async ({ children }) => {
   }
 
   return (
-    <div className="w-full flex">
+    <div className="w-full flex mt-10">
       <div className="w-[15%]">
         <DashboardLayouts />
       </div>
