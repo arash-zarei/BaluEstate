@@ -17,7 +17,7 @@ const DashboardLayout = async ({ children }) => {
       <div className="w-[15%]">
         <DashboardLayouts />
       </div>
-      <div className="w-[85%]">{children}</div>
+      <div className="w-[85%]  px-7">{children}</div>
     </div>
   );
 };
