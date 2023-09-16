@@ -21,7 +21,7 @@ const DashboardLayouts = async () => {
           <AiOutlineUser size={25} />
         </span>
         <p className="w-full overflow-x-auto text-center text-gray-500 font-semibold">
-          {session.user.email}
+          {session?.user.email}
         </p>
       </div>
       <div>
