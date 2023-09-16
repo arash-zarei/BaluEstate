@@ -13,11 +13,11 @@ const DashboardLayout = async ({ children }) => {
   }
 
   return (
-    <div className="w-full flex mt-10">
-      <div className="w-[15%]">
+    <div className="w-full flex flex-col md:flex-row gap-3 mt-10">
+      <div className="w-full md:w-[20%]">
         <DashboardLayouts />
       </div>
-      <div className="w-[85%]  px-7">{children}</div>
+      <div className="w-full my-10 md:w-[80%] md:my-0">{children}</div>
     </div>
   );
 };
