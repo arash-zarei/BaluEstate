@@ -37,7 +37,7 @@ const SignInPage = () => {
 
     if (!res.error) {
       toast.success("ورود موققیت آمیز بود.");
-      router.replace("/advertisements");
+      router.replace("/dashboard");
     }
     if (res.error) toast.error(res.error);
   };
