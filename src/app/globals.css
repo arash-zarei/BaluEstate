@@ -13,6 +13,11 @@ textarea {
   font-family: inherit;
 }
 
+.rmdp-input{
+  text-align: center;
+  padding: 4px 0;
+}
+
 .attribute_card {
   @apply flex flex-col gap-2 items-center py-3 my-4 rounded-md;
 }
