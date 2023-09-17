@@ -11,8 +11,8 @@ const RadioList = ({ profileData, setProfileData }) => {
 
   return (
     <div className="w-full mt-10">
-      <p>دسته بندی</p>
-      <div className="flex items-center gap-14 mt-4">
+      <p className="font-semibold text-lg">دسته بندی</p>
+      <div className="flex items-center flex-wrap justify-center gap-14 mt-4">
         <div className="py-1 px-3 rounded-md bg-yellow-400 text-black flex items-center gap-3">
           <label className="cursor-pointer" htmlFor="villa">ویلا</label>
           <input
