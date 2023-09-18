@@ -3,7 +3,7 @@ import React from "react";
 
 const MyAdsPage = ({ ads }) => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-5">
       {ads.length ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {ads.map((item) => (
