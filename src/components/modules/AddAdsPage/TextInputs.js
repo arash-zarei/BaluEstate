@@ -27,6 +27,7 @@ const TextInputs = ({
       ) : (
         <input
           type="text"
+          maxLength="22"
           name={name}
           value={profileData[name]}
           onChange={changeHandler}

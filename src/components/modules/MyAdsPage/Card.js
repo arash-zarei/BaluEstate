@@ -25,8 +25,8 @@ const Card = ({ data }) => {
         {icons[category]}
       </div>
       <div className="flex flex-col gap-6 mt-4">
-        <h3 className="text-xl font-semibold overflow-x-auto">{title}</h3>
-        <p className="text-gray-600 flex gap-1 overflow-x-auto">
+        <h3 className="text-xl font-semibold">{title}</h3>
+        <p className="text-gray-600 flex gap-1">
           <CiLocationOn /> {location}{" "}
         </p>
         <p className="text-black"> تومان {price}</p>
