@@ -1,10 +1,13 @@
 "use client";
 
+import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+
 import CustomDatePicker from "@/modules/AddAdsPage/CustomDatePicker";
 import RadioList from "@/modules/AddAdsPage/RadioList";
 import TextInputs from "@/modules/AddAdsPage/TextInputs";
 import TextList from "@/modules/AddAdsPage/TextList";
-import React, { useState } from "react";
+import { ProgressBar } from "react-loader-spinner";
 
 const AddAdsPage = () => {
   const [profileData, setProfileData] = useState({
@@ -20,9 +23,26 @@ const AddAdsPage = () => {
     amenities: [],
   });
 
-  const submitHandler = () => {
-    console.log(profileData);
-  }
+  const [loading, setLoading] = useState(false);
+
+  const submitHandler = async () => {
+    setLoading(true);
+
+    const res = await fetch("/api/ads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profileData),
+    });
+    const data = await res.json();
+
+    setLoading(false);
+
+    if (data.error) {
+      toast.error(data.error);
+    } else {
+      toast.success(data.message);
+    }
+  };
 
   return (
     <div className="w-full mb-7" id="ads">
@@ -80,11 +100,30 @@ const AddAdsPage = () => {
           title="قوانین"
           type="rules"
         />
-        <CustomDatePicker profileData={profileData} setProfileData={setProfileData} />
-        <button onClick={submitHandler} className="bg-blue-700 w-full py-2 rounded-md text-white font-semibold my-10">
-          ثبت آگهی
-        </button>
+        <CustomDatePicker
+          profileData={profileData}
+          setProfileData={setProfileData}
+        />
+        {loading ? (
+          <ProgressBar
+            height="80"
+            width="80"
+            ariaLabel="progress-bar-loading"
+            wrapperClass="progress-bar-wrapper"
+            borderColor="#1d4ed8"
+            barColor="#facc15"
+            wrapperStyle={{ margin: "0 auto" }}
+          />
+        ) : (
+          <button
+            onClick={submitHandler}
+            className="bg-blue-700 w-full py-2 rounded-md text-white font-semibold my-10"
+          >
+            ثبت آگهی
+          </button>
+        )}
       </div>
+      <Toaster />
     </div>
   );
 };
