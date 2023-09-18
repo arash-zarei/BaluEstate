@@ -83,4 +83,4 @@ const POST = async (req) => {
   }
 };
 
-export default POST;
+export { POST };
