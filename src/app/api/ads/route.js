@@ -83,4 +83,94 @@ const POST = async (req) => {
   }
 };
 
-export { POST };
+const PATCH = async (req) => {
+  try {
+    await connectDB();
+
+    const {
+      _id,
+      title,
+      description,
+      location,
+      phone,
+      realEstate,
+      price,
+      constructionDate,
+      category,
+      amenities,
+      rules,
+    } = await req.json();
+
+    const session = await getServerSession(req);
+
+    if (!session) {
+      return NextResponse.json(
+        { error: "ابتدا وارد حساب کاربری حود شوید!" },
+        { status: 401 }
+      );
+    }
+
+    const user = await User.findOne({ email: session.user.email });
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "حساب کاربری یافت نشد!" },
+        { status: 404 }
+      );
+    }
+
+    if (
+      !_id ||
+      !title ||
+      !location ||
+      !description ||
+      !phone ||
+      !realEstate ||
+      !price ||
+      !constructionDate ||
+      !category
+    ) {
+      return NextResponse.json(
+        { error: "اطفا تمام موارد را به صورت کامل پر کنید!" },
+        { status: 400 }
+      );
+    }
+
+    const ads = await Ads.findOne({ _id });
+
+    if (!user._id.equals(ads.userId)) {
+      return NextResponse.json(
+        { error: "دسترسی به این آگهی محدود شده است!" },
+        { status: 403 }
+      );
+    }
+
+    ads.title = title;
+    ads.description = description;
+    ads.location = location;
+    ads.phone = phone;
+    ads.realState = realState;
+    ads.price = price;
+    ads.constructionDate = constructionDate;
+    ads.amenities = amenities;
+    ads.rules = rules;
+    ads.category = category;
+    ads.save();
+
+    return NextResponse.json(
+      {
+        message: "آگهی با موفقیت ویرایش شد",
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است!" },
+      { status: 500 }
+    );
+  }
+};
+
+export { POST, PATCH };
