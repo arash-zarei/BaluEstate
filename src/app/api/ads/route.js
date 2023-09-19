@@ -149,7 +149,7 @@ const PATCH = async (req) => {
     ads.description = description;
     ads.location = location;
     ads.phone = phone;
-    ads.realState = realState;
+    ads.realEstate = realEstate;
     ads.price = price;
     ads.constructionDate = constructionDate;
     ads.amenities = amenities;
