@@ -1,14 +1,37 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Card from "@/modules/MyAdsPage/Card";
+import toast, { Toaster } from "react-hot-toast";
+import { ProgressBar } from "react-loader-spinner";
 
 const DashBoardCard = ({ data }) => {
+  const [loading, setLoading] = useState(false);
+
+  const id = data._id;
   const router = useRouter();
 
   const editHandler = () => {
-    router.push(`/dashboard/my-ads/${data._id}`);
+    router.push(`/dashboard/my-ads/${id}`);
+  };
+
+  const deleteHandler = async () => {
+    setLoading(true);
+
+    const res = await fetch(`/api/ads/delete/${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+
+    setLoading(false);
+
+    if (data.error) {
+      toast.error(data.error);
+    } else {
+      toast.success(data.message);
+      router.refresh();
+    }
   };
 
   return (
@@ -21,10 +44,26 @@ const DashBoardCard = ({ data }) => {
         >
           ویرایش
         </button>
-        <button className="py-1 px-3 rounded-md font-semibold bg-red-600 text-white">
-          حدف
-        </button>
+        {loading ? (
+          <ProgressBar
+            height="40"
+            width="40"
+            ariaLabel="progress-bar-loading"
+            wrapperClass="progress-bar-wrapper"
+            borderColor="red"
+            barColor="#red"
+            wrapperStyle={{ margin: "0 auto" }}
+          />
+        ) : (
+          <button
+            onClick={deleteHandler}
+            className="py-1 px-3 rounded-md font-semibold bg-red-600 text-white"
+          >
+            حدف
+          </button>
+        )}
       </div>
+      <Toaster />
     </div>
   );
 };
