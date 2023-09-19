@@ -33,7 +33,7 @@ const Card = ({ data }) => {
       </div>
       <Link
         href=""
-        className="w-fit flex flex-row-reverse justify-between items-center gap-x-12 mt-6 text-blue-700 font-bold"
+        className="flex flex-row-reverse justify-between items-center gap-x-12 mt-6 text-blue-700 font-bold"
       >
         <AiOutlineArrowLeft />
         مشاهده آگهی
