@@ -29,7 +29,7 @@ const Card = ({ data }) => {
         <p className="text-gray-600 flex gap-1">
           <CiLocationOn /> {location}{" "}
         </p>
-        <p className="text-black"> تومان {price}</p>
+        <p className="text-black">{price} تومان </p>
       </div>
       <Link
         href=""
