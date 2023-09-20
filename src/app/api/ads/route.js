@@ -6,6 +6,27 @@ import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import Ads from "@/models/Ads";
 
+export async function GET() {
+  try {
+    await connectDB();
+
+    const ads = await Ads.find().select("-userId");
+
+    return NextResponse.json(
+      {
+        data: ads,
+      },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
+  }
+}
+
 const POST = async (req) => {
   try {
     await connectDB();
