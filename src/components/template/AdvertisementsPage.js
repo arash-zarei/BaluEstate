@@ -10,13 +10,16 @@ const AdvertisementsPage = ({ data }) => {
         <Sidebar />
       </div>
       <div className="w-[80%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {!data.lenght ? (
-          data.map((ads) => <Card key={ads._id} data={ads} />)
-        ) : (
-          <p className="text-red-700 bg-red-200 py-2 px-4 rounded-md">
-            هیچ آگهی ثبت نشده است.
+        {data.length ? null : (
+          <p className="text-red-700 bg-red-200 py-2 px-4 max-w-fit max-h-10 rounded-md">
+            هیچ آگهی ثبت نشده است
           </p>
         )}
+        {data.map((ads) => (
+          <div key={ads._id}>
+            <Card  data={ads} />
+          </div>
+        ))}
       </div>
     </div>
   );

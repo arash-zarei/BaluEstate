@@ -16,8 +16,7 @@ const Sidebar = () => {
       </Link>
       <ul>
         {Object.keys(categories).map((i) => (
-          // eslint-disable-next-line react/jsx-key
-          <li className="mt-4">
+          <li className="mt-4" key={i}>
             <Link
               href={{
                 pathname: "/advertisements",
