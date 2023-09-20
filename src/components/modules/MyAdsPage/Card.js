@@ -10,7 +10,7 @@ import { BiStore } from "react-icons/bi";
 import { GiOfficeChair } from "react-icons/gi";
 
 const Card = ({ data }) => {
-  const { title, location, price, category } = data;
+  const { _id, title, location, price, category } = data;
 
   const icons = {
     villa: <RiHome3Line />,
@@ -32,7 +32,7 @@ const Card = ({ data }) => {
         <p className="text-black">{price} تومان </p>
       </div>
       <Link
-        href=""
+        href={`advertisements/${_id}`}
         className="flex flex-row-reverse justify-between items-center gap-x-12 mt-6 text-blue-700 font-bold"
       >
         <AiOutlineArrowLeft />
