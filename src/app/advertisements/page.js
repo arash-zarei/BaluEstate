@@ -1,6 +1,6 @@
 import AdvertisementsPage from "@/template/AdvertisementsPage";
 
-const Advertisements = async () => {
+const Advertisements = async ({searchParams}) => {
   // بهتر است در کامپوننت های سرورساید از ای پی آی روت استفاده نکنیم(این مورد حالت تمرینی دارد)
   const res = await fetch("http://localhost:3000/api/ads", {
     cache: "no-store",
@@ -14,7 +14,12 @@ const Advertisements = async () => {
       </h3>
     );
 
-  return <AdvertisementsPage data={data.data} />;
+  let finalData = data.data;
+  if (searchParams.category) {
+    finalData = finalData.filter((i) => i.category === searchParams.category);
+  }
+
+  return <AdvertisementsPage data={finalData} />;
 };
 
 export default Advertisements;
