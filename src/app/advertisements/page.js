@@ -14,7 +14,7 @@ const Advertisements = async () => {
       </h3>
     );
 
-  return <AdvertisementsPage data={data} />;
+  return <AdvertisementsPage data={data.data} />;
 };
 
 export default Advertisements;
