@@ -25,7 +25,7 @@ const AdminCard = ({ ads }) => {
         </button>
         <Link
           href={`advertisements/${_id}`}
-          className="py-2 px-4 rounded-md bg-yellow-400 text-black"
+          className="ml-4 py-2 px-4 rounded-md bg-yellow-400 text-black"
         >
           بررسی جزییات آگهی
         </Link>
