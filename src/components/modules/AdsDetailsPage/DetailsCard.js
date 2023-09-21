@@ -17,7 +17,7 @@ const DetailsCard = ({
   constructionDate,
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full sm:flex sm:justify-center sm:items-center sm:gap-5 lg:block">
       <div className="bg-white shadow-xl p-4 rounded-lg">
         <div className="flex justify-center">
           <SiHomebridge className="text-4xl text-blue-700" />
