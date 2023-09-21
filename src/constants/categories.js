@@ -1,3 +1,8 @@
+import { BiStore } from "react-icons/bi";
+import { GiOfficeChair } from "react-icons/gi";
+import { MdApartment } from "react-icons/md";
+import { RiHome3Line } from "react-icons/ri";
+
 const services = ["خرید", "فروش", "رهن", "اجاره"];
 const cities = [
   "تهران",
@@ -16,4 +21,11 @@ const categories = {
   office: "دفتر",
 };
 
-export { services, cities, categories };
+const icons = {
+  villa: <RiHome3Line />,
+  apartment: <MdApartment />,
+  store: <BiStore />,
+  office: <GiOfficeChair />,
+};
+
+export { services, cities, categories, icons };

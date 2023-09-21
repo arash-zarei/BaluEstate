@@ -1,23 +1,14 @@
-import Link from "next/link";
 import React from "react";
+
+import Link from "next/link";
+import { icons } from "@/constants/categories";
 
 // Icons
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { RiHome3Line } from "react-icons/ri";
-import { MdApartment } from "react-icons/md";
-import { BiStore } from "react-icons/bi";
-import { GiOfficeChair } from "react-icons/gi";
 
 const Card = ({ data }) => {
   const { _id, title, location, price, category } = data;
-
-  const icons = {
-    villa: <RiHome3Line />,
-    apartment: <MdApartment />,
-    store: <BiStore />,
-    office: <GiOfficeChair />,
-  };
 
   return (
     <div className="w-full bg-gray-100 py-2 p-4 rounded-lg">
