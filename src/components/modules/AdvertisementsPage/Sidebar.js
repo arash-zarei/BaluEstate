@@ -11,10 +11,10 @@ const Sidebar = () => {
         <HiFilter color="blue" />
         دسته بندی
       </p>
+      <ul className="flex justify-center gap-9 sm:block">
       <Link href="/advertisements" className="mt-4">
         همه
       </Link>
-      <ul>
         {Object.keys(categories).map((i) => (
           <li className="mt-4" key={i}>
             <Link
