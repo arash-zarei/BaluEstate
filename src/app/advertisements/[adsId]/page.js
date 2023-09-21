@@ -15,3 +15,9 @@ const AdsDetails = async ({ params }) => {
 };
 
 export default AdsDetails;
+
+export const generateMetadata = async ({ params: { adsId } }) => {
+  const res = await fetch(`http://localhost:3000/api/ads/${adsId}`);
+  const data = await res.json();
+  return { title: data.data.title, description: data.data.description, authors: {name: data.data.realEstate} };
+};
