@@ -12,7 +12,7 @@ const AdminPage = ({ data }) => {
       ) : (
         <h3 className="text-green-700 bg-green-200 py-2 px-3 rounded-md">
           آگهی در انتظار تایید وجود ندارد.
-        ÷</h3>
+        </h3>
       )}
       <Toaster />
     </div>

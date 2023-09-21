@@ -37,6 +37,13 @@ const DashBoardCard = ({ data }) => {
   return (
     <div className="flex flex-col items-center border-2 border-blue-600 py-5 px-8 rounded-lg">
       <Card data={data} />
+      <span
+        className={`py-1 px-2 rounded-md my-2 ${
+          data.published ? "bg-green-500" : "bg-blue-700"
+        }`}
+      >
+        {data.published ? "تایید شده" : "در انتطار تایید"}
+      </span>
       <div className="flex items-center gap-10 my-4">
         <button
           onClick={editHandler}
