@@ -6,6 +6,10 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 
+export const metadata = {
+  title: "پنل کاربری سایت املاک بالو",
+};
+
 const DashboardLayout = async ({ children }) => {
   const session = await getServerSession(authOptions);
 

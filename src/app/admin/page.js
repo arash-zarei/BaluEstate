@@ -8,6 +8,10 @@ import DashboardLayouts from "@/layout/DashboardLayout";
 import AdminPage from "@/template/AdminPage";
 import Ads from "@/models/Ads";
 
+export const metadata = {
+  title: "پنل ادمین سایت املاک بالو",
+};
+
 const Admin = async () => {
   await connectDB();
   const session = await getServerSession(authOptions);
