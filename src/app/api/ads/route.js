@@ -10,7 +10,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const ads = await Ads.find().select("-userId");
+    const ads = await Ads.find({ published: true }).select("-userId");
 
     return NextResponse.json(
       {
