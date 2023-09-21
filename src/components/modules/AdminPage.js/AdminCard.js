@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const AdminCard = ({ ads }) => {
   const { _id, title, price, category, location } = ads;
-  console.log(ads);
   return (
     <div className="w-full border border-blue-700 rounded-md p-3 mt-3">
       <p className="text-black font-semibold text-xl">{title}</p>
@@ -30,6 +29,9 @@ const AdminCard = ({ ads }) => {
         >
           بررسی جزییات آگهی
         </Link>
+        <button className="ml-4 py-2 px-4 rounded-md bg-red-600 text-white">
+          حدف آگهی
+        </button>
       </div>
     </div>
   );
