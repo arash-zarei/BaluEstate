@@ -19,17 +19,17 @@ const AdminCard = ({ ads }) => {
           {categories[category]}
         </span>
       </div>
-      <div className="mt-6">
-        <button className="ml-4 py-2 px-4 rounded-md bg-green-500 text-white">
+      <div className="mt-6 flex items-center gap-3 flex-wrap">
+        <button className="py-2 px-4 rounded-md bg-green-500 text-white">
           تایید آگهی
         </button>
         <Link
           href={`advertisements/${_id}`}
-          className="ml-4 py-2 px-4 rounded-md bg-yellow-400 text-black"
+          className="py-2 px-4 rounded-md bg-yellow-400 text-black"
         >
           بررسی جزییات آگهی
         </Link>
-        <button className="ml-4 py-2 px-4 rounded-md bg-red-600 text-white">
+        <button className="py-2 px-4 rounded-md bg-red-600 text-white">
           حدف آگهی
         </button>
       </div>
