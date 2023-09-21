@@ -10,7 +10,9 @@ const AdminPage = ({ data }) => {
           <AdminCard key={ads._id} ads={JSON.parse(JSON.stringify(ads))} />
         ))
       ) : (
-        <h3 className="text-green-700 bg-green-200 py-2 px-3 rounded-md"></h3>
+        <h3 className="text-green-700 bg-green-200 py-2 px-3 rounded-md">
+          آگهی در انتظار تایید وجود ندارد.
+        ÷</h3>
       )}
       <Toaster />
     </div>

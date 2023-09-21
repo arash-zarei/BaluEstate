@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 
 const AdminCard = ({ ads }) => {
   const [loading, setLoading] = useState(false);
+  const [loadingDel, setLoadingDel] = useState(false);
 
   const router = useRouter();
 
@@ -23,6 +24,24 @@ const AdminCard = ({ ads }) => {
     const data = await res.json();
 
     setLoading(false);
+
+    if (data.error) {
+      toast.error(data.error);
+    } else {
+      toast.success(data.message);
+      router.refresh();
+    }
+  };
+
+  const deleteHandler = async () => {
+    setLoadingDel(true);
+
+    const res = await fetch(`/api/ads/deletebyadmin/${_id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+
+    setLoadingDel(false);
 
     if (data.error) {
       toast.error(data.error);
@@ -70,9 +89,24 @@ const AdminCard = ({ ads }) => {
         >
           بررسی جزییات آگهی
         </Link>
-        <button className="py-2 px-4 rounded-md bg-red-600 text-white">
+        {loadingDel ? (
+          <ProgressBar
+            height="40"
+            width="40"
+            ariaLabel="progress-bar-loading"
+            wrapperClass="progress-bar-wrapper"
+            borderColor="red"
+            barColor="red"
+          />
+        ) : (
+          <button
+          onClick={deleteHandler}
+          className="py-2 px-4 rounded-md bg-red-600 text-white"
+        >
           حدف آگهی
         </button>
+        )}
+        
       </div>
     </div>
   );
