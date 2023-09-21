@@ -1,6 +1,6 @@
-import DashboardLayouts from "@/layout/DashboardLayout";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
+import DashboardLayouts from "@/layout/DashboardLayout";
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
