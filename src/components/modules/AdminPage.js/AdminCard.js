@@ -1,10 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { ProgressBar } from "react-loader-spinner";
 import { categories, icons } from "@/constants/categories";
 import { sp } from "@/utils/replaceNumber";
-import Link from "next/link";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const AdminCard = ({ ads }) => {
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const { _id, title, price, category, location } = ads;
+
+  const publishHandler = async () => {
+    setLoading(true);
+    const res = await fetch(`/api/ads/publish/${_id}`, {
+      method: "PATCH",
+    });
+    const data = await res.json();
+
+    setLoading(false);
+
+    if (data.error) {
+      toast.error(data.error);
+    } else {
+      toast.success(data.message);
+      router.refresh();
+    }
+  };
+
   return (
     <div className="w-full border border-blue-700 rounded-md p-3 mt-3">
       <p className="text-black font-semibold text-xl">{title}</p>
@@ -20,9 +47,23 @@ const AdminCard = ({ ads }) => {
         </span>
       </div>
       <div className="mt-6 flex items-center gap-3 flex-wrap">
-        <button className="py-2 px-4 rounded-md bg-green-500 text-white">
-          تایید آگهی
-        </button>
+        {loading ? (
+          <ProgressBar
+            height="40"
+            width="40"
+            ariaLabel="progress-bar-loading"
+            wrapperClass="progress-bar-wrapper"
+            borderColor="#1d4ed8"
+            barColor="#facc15"
+          />
+        ) : (
+          <button
+            onClick={publishHandler}
+            className="py-2 px-4 rounded-md bg-green-500 text-white"
+          >
+            تایید آگهی
+          </button>
+        )}
         <Link
           href={`advertisements/${_id}`}
           className="py-2 px-4 rounded-md bg-yellow-400 text-black"
